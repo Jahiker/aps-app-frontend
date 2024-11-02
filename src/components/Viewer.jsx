@@ -12,8 +12,8 @@ const Viewer = () => {
   // const response = fetch("http://localhost:3000/auth/get-token");
 
   return (
-    <div className="w-screen h-screen">
-      <div className="flex w-full h-full relative bg-yellow-200">
+    <div className="w-full h-screen">
+      <div className="flex w-full h-full relative bg-gradient-to-b from-primary">
         <div className="w-full h-full" id="myViewer"></div>
       </div>
     </div>

@@ -25,6 +25,13 @@ export const initViewer = async (urn) => {
   //contenedor para pintar el modelo
   const viewerContainer = document.getElementById("myViewer");
 
+  // const config = {
+  //   extensions: [
+  //     "Autodesk.AEC.Minimap3DExtension", "Autodesk.AEC.LevelsExtension", "Autodesk.DocumentBrowser",
+  //   ]
+  // };
+
+
   let viewer = new Autodesk.Viewing.GuiViewer3D(viewerContainer, {});
 
   const documentUrn = `urn:${urn}`;
@@ -32,7 +39,11 @@ export const initViewer = async (urn) => {
   Autodesk.Viewing.Initializer(options, function () {
     var htmlDiv = document.getElementById("myViewer");
     viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
+
+    //arrancar el viewer
+
     var startedCode = viewer.start();
+
     if (startedCode > 0) {
       console.error("Failed to create a Viewer: WebGL not supported.");
       return;
@@ -45,6 +56,7 @@ export const initViewer = async (urn) => {
         const defaultModel = viewerDocument.getRoot().getDefaultGeometry();
 
         viewer.loadDocumentNode(viewerDocument, defaultModel);
+        
         console.log("Document loaded successfully");
       },
       () => {
